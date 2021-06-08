@@ -4,6 +4,7 @@
       <a href="/" class="logo">
         <img src="../assets/img/logo.png" alt="logo" />
       </a>
+
       <div class="header-dashboard dropdown">
         <span>Dashboards</span>
         <ul class="header-dashboard__drop">
@@ -30,7 +31,12 @@
   </header>
 </template>
 <script>
-  export default {};
+
+  export default {
+    components: {
+
+    }
+  };
 </script>
 <style lang="scss">
   .header {
@@ -47,6 +53,10 @@
     }
 
     &__right-links {
+      display: flex;
+      .header-link {
+        margin: 0 10px;
+      }
     }
   }
   .logo {
@@ -75,19 +85,29 @@
   .dropdown {
   }
   .form-search {
+    margin-right: 20px;
+    width: 170px;
+    input {
+      padding-left: 30px;
+      height: 32px;
+      background-color: #083377;
+      color:#fff;
+      border: 2px solid #0a47a2;
+      font-size: 14px;
+    }
   }
   .header-link {
-    /* .header-link_feedback */
+    color:#fff;
+    cursor: pointer;
 
     &_feedback {
     }
 
-    /* .header-link_help */
+
 
     &_help {
     }
 
-    /* .header-link_login */
 
     &_login {
     }
