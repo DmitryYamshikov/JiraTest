@@ -6,14 +6,14 @@ export default ({
          name: 'login',
          placeholder: 'Enter Login',
          type: 'text',
-         value: '123',
+         value: '',
          title: 'Login'
       },
       {
          name: 'password',
          placeholder: 'Enter password',
          type: 'password',
-         value: '2',
+         value: '',
          title: 'Password'
       }]
    },
@@ -23,11 +23,15 @@ export default ({
    },
    mutations: {
       signIn: (state) => state.login = !state.login,
+      onInput: (state, {index, value}) => state.fields[index].value = value,
    },
    actions: {
       signIn(context) {
          context.commit('signIn')
       },
+      onInput({commit}, {index, value}) {
+         commit('onInput', {index,value})
+      }
    },
    modules: {
    },

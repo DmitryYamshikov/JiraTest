@@ -6,12 +6,14 @@
         <form class="form-registr" @submit.prevent="signIn">
           <div class="form-registr__inputs" v-for="field, index in fields" :key="field.name">
             <label
-              ><span>{{field.title}}</span>
-              <input :type="field.type"
-                     :name="field.name" 
-                     :placeholder="field.placeholder"
-                     :value='field.value'
-                     @input='onUpdate(index,field.value)'/>
+              ><span>{{ field.title }}</span>
+              <input
+                :type="field.type"
+                :name="field.name"
+                :placeholder="field.placeholder"
+                :value="field.value"
+                @input="onInput({index, value:$event.target.value.trim()})"
+              />
             </label>
           </div>
           <label><input type="checkbox" name="save-pass" />Remember my Login for this computer</label>
@@ -29,7 +31,7 @@
   export default {
     data: () => ({}),
     methods: {
-      ...mapActions("formregistr", ["signIn"]),
+      ...mapActions("formregistr", ["signIn", "onInput"]),
     },
     computed: {
       ...mapGetters("formregistr", ["login", "fields"]),
