@@ -1,14 +1,17 @@
 <template>
-
+  <header-section></header-section>
   <form-registr></form-registr>
 </template>
 <script>
 
-import FormRegistr from './components/FormRegistr.vue';
+import FormRegistr from './components/FormRegistr';
+import HeaderSection from './components/HeaderSection';
 
 export default {
   components: {
     FormRegistr,
+    HeaderSection
+
   },
 };
 </script>
