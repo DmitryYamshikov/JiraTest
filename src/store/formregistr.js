@@ -1,7 +1,7 @@
 export default ({
    namespaced: true,
    state: {
-      login: true,
+      login:false,
       fields: [{
          name: 'login',
          placeholder: 'Enter Login',

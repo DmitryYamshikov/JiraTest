@@ -1,29 +1,26 @@
 <template>
   <div v-if="!login">
-    <div class="modal-register">
-      <div class="modal-register__form-wrapper">
-        <h2 class="modal-register__title">Login</h2>
-        <form class="form-registr" @submit.prevent="signIn">
-          <div class="form-registr__inputs" v-for="field, index in fields" :key="field.name">
-            <label
-              ><span>{{ field.title }}</span>
-              <input
-                :type="field.type"
-                :name="field.name"
-                :placeholder="field.placeholder"
-                :value="field.value"
-                @input="onInput({index, value:$event.target.value.trim()})"
-              />
-            </label>
-          </div>
-          <label><input type="checkbox" name="save-pass" />Remember my Login for this computer</label>
-          <div class="form-registr__notification">
-            Not a member? To request an account, please contact your Jira administrators
-          </div>
-          <button class="btn">Log in</button>
-        </form>
+    <h2 class="modal-register__title">Login</h2>
+    <form class="form-registr" @submit.prevent="signIn">
+      <div class="form-registr__inputs" v-for="(field, index) in fields" :key="field.name">
+        <label
+          ><span>{{ field.title }}</span>
+
+          <input
+            :type="field.type"
+            :name="field.name"
+            :placeholder="field.placeholder"
+            :value="field.value"
+            @input="onInput({ index, value: $event.target.value.trim() })"
+          />
+        </label>
       </div>
-    </div>
+      <label><input type="checkbox" name="save-pass" />Remember my Login for this computer</label>
+      <div class="form-registr__notification">
+        Not a member? To request an account, please contact your Jira administrators
+      </div>
+      <button class="btn">Log in</button>
+    </form>
   </div>
 </template>
 <script>
