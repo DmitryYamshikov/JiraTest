@@ -6,17 +6,22 @@
 body, html {
   margin: 0;
   padding:0;
+  background-color: #f4f5f7;
 }
 .btn {
-  min-width: 100px;
-  padding: 5px 10px;
+  min-width: 60px;
+  height: 30px;
+  padding: 5px 5px;
   color: #fff;
-  background-color: blue;
-  border: 1px solid blue;
+  background-color: #0152cc;
+  border: 1px solid #0152cc;
   cursor: pointer;
   transition: all linear 0.3s;
+  font-weight: 600;
+  border-radius: 3px;
+  font-size: 13px;
   &:hover {
-    color: blue;
+    color: #0152cc;
     background-color: #fff;
   }
 }

@@ -1,19 +1,39 @@
 <template>
   <header-section></header-section>
-  <form-registr></form-registr>
+  <router-view></router-view>
 </template>
 <script>
-  import makeRequest from "@/api/server.js";
-  import FormRegistr from "./components/FormRegistr";
+  // import makeRequest from "./api/server.js";
   import HeaderSection from "./components/HeaderSection";
+
+
+  import {mapGetters, mapActions} from 'vuex';
+
 
   export default {
     components: {
-      FormRegistr,
       HeaderSection,
     },
+    computed: {
+      ...mapGetters(['login'])
+    },
+    methods:{
+      ...mapActions(['signIn'])
+    },
+    beforeMount() {
+      console.log(this.login);
+      if (!localStorage.getItem('token'))
+        {this.$router.push({name:'Login'})}
+      else {
+        this.$router.push({name:'Dash'});
+        this.signIn();
+      }
+    },
+    Updated() {
+
+    },
     created() {
-      makeRequest();
+      // makeRequest();
     },
   };
 </script>
