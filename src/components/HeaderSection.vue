@@ -5,7 +5,7 @@
         <img src="../assets/img/logo.png" alt="logo" />
       </a>
 
-      <div class="header-dashboard dropdown">
+      <div class="header-dashboard dropdown" v-if="!login">
         <div>Dashboards</div>
         <ul class="header-dashboard__drop">
           <li>
@@ -14,6 +14,7 @@
         </ul>
       </div>
     </div>
+    <menu-block v-if="login"></menu-block>
     <div class="header__right">
       <div class="form-search">
         <form>
@@ -25,16 +26,19 @@
         <div class="header-link header-link_help">
           <span>?</span>
         </div>
-        <div class="header-link header-link_login" v-if="login">Log In</div>
+        <div class="header-link header-link_login" v-if="!login">Log In</div>
         <div class="header-link header-link_login" @click="logOut($router)" v-else>Log Out</div>
       </div>
     </div>
   </header>
 </template>
 <script>
+import MenuBlock from './Menu'
 import {mapGetters, mapActions} from 'vuex';
   export default {
-    components: {},
+    components: {
+      MenuBlock
+    },
     computed: {
       ...mapGetters(['login'])
     },
@@ -49,7 +53,6 @@ import {mapGetters, mapActions} from 'vuex';
     padding: 0 15px;
     background-color: #0747a6;
     display: flex;
-    justify-content: space-between;
     &__right,
     &__left {
       display: flex;
@@ -60,6 +63,10 @@ import {mapGetters, mapActions} from 'vuex';
         align-items: center;
       }
     }
+    &__right {
+      margin-left: auto;
+    }
+
 
     &__right-links {
       display: flex;

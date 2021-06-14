@@ -1,6 +1,8 @@
 <template>
   <header-section></header-section>
-  <router-view></router-view>
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
 <script>
   // import makeRequest from "./api/server.js";

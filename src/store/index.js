@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
 import formregistr from './formregistr';
+import menu from './menu';
+import projects from './projects';
 
 export default createStore({
   state: {
@@ -31,6 +33,8 @@ export default createStore({
     }
   },
   modules: {
-    formregistr
+    formregistr,
+    menu,
+    projects
   },
 });

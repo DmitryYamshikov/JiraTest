@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login';
 import Dashboard from '../views/Dash';
+import Projects from '../views/Projects';
+import OneProject from "../views/OneProject";
 const routes = [
   {
     path: '/',
@@ -13,11 +15,16 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  // {
-  //   path: '/Dashboard',
-  //   name: 'Dash',
-  //   component: Dashboard
-  // }
+  {
+    path: '/Projects',
+    name: 'Projects',
+    component: Projects
+  },
+  {
+    path: '/Projects/:id',
+    name: 'OneProject',
+    component: OneProject
+  }
 ];
 
 const router = createRouter({

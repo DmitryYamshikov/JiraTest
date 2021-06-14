@@ -47,9 +47,7 @@ export default {
     ...mapActions("formregistr", ["onInput", "onSubmit"]),
     ...mapActions(["rememberChange"]),
     async submitForm(router){
-      this.onSubmit(router)
-
-
+       await this.onSubmit(router)
     }
   },
   computed: {
