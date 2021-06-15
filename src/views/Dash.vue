@@ -1,19 +1,30 @@
 <template>
   <h1>DashBoard</h1>
+  <ul>
+    <li v-for="(item) in dashList" :key="item.id">
+
+      <div class="row">
+        <span>{{ item.id }}</span>
+        <span>{{ item.name }}</span>
+        <span>{{ item.created_at }}</span>
+      </div>
+
+    </li>
+  </ul>
 </template>
 <script>
-import makeRequest from "../api/server";
-  export default {
-    beforeCreate() {
-      makeRequest('comments', {
-        method: "GET",
-        headers: {
-          'accept': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-      .then(data=>data.json())
-      .then(data=>console.log(data))
+  import {mapGetters, mapActions} from 'vuex'
+
+  export default ({
+    computed: {
+      ...mapGetters('dash', ['dashList'])
+    },
+    methods: {
+      ...mapActions('dash', ['getDashboard'])
+    },
+    created() {
+      this.getDashboard();
     }
-  }
+  })
+
 </script>
