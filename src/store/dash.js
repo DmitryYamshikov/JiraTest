@@ -25,7 +25,6 @@ export default ({
             })
                 .then(data=>data.json())
                 .then(data=> {
-                    console.log(data)
                     store.commit('getDashboard', data.data)
                 })
         }

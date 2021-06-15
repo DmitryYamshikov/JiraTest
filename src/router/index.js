@@ -3,6 +3,8 @@ import Login from '../views/Login';
 import Dashboard from '../views/Dash';
 import Projects from '../views/Projects';
 import OneProject from "../views/OneProject";
+import DashOne from "../views/DashOne";
+
 const routes = [
   {
     path: '/',
@@ -10,7 +12,11 @@ const routes = [
     component: Dashboard
   },
   {
-
+    path: '/:id',
+    name: 'DashOne',
+    component: DashOne
+  },
+  {
     path: '/Login',
     name: 'Login',
     component: Login

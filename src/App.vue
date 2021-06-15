@@ -20,16 +20,16 @@
       ...mapGetters(['login'])
     },
     methods:{
-      ...mapActions(['signIn'])
+      ...mapActions(['signIn','getUsers'])
     },
     beforeMount() {
-      console.log(this.login);
       if (!localStorage.getItem('token'))
         {this.$router.push({name:'Login'})}
       else {
         this.$router.push({name:'Dash'});
         this.signIn();
       }
+      this.getUsers();
     },
     Updated() {
 
