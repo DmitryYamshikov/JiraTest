@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login';
+import ResetPass from '../views/ResetPass';
 import Dashboard from '../views/Dash';
 import Projects from '../views/Projects';
 import OneProject from "../views/OneProject";
@@ -20,6 +21,11 @@ const routes = [
     path: '/Login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/ResetPass',
+    name: 'ResetPass',
+    component: ResetPass
   },
   {
     path: '/Projects',

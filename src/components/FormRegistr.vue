@@ -34,7 +34,10 @@
           Not a member? To request an account, please contact your Jira
           administrators
         </div>
-        <button class="btn">Log in</button>
+        <div class="form-registr__log-reset">
+          <button class="btn">Log in</button>
+          <router-link :to="{name:'ResetPass'}">Can't access your account?</router-link>
+        </div>
       </div>
     </form>
   </div>
@@ -101,6 +104,22 @@ export default {
     label {
       font-size: 14px;
     }
+  }
+  &__log-reset {
+    display: flex;
+    align-items: center;
+    .btn {
+      margin-right: 9px;
+    }
+    a {
+      color:rgb(0, 82, 204);
+      font-size: 14px;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+
   }
 }
 .modal-register {
