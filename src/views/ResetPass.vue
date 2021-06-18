@@ -42,7 +42,6 @@
         <div class="form__footer">
           <button class="btn">Send</button>
           <router-link :to="{ name: 'Login' }">Cancel</router-link>
-          {{ forgotType }}
         </div>
       </form>
     </div>

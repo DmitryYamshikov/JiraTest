@@ -23,11 +23,12 @@ export default ({
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             })
-                .then(data=>data.json())
-                .then(data=> {
-                    store.commit('getDashboard', data.data)
-                })
+            .then(data=>data.json())
+            .then(data=> {
+                store.commit('getDashboard', data.data)
+            })
         }
     }
 
 })
+

@@ -12,6 +12,9 @@
       </router-link>
     </li>
   </ul>
+  <div class="qwe">
+    <div class="qwe__w"></div>
+  </div>
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'

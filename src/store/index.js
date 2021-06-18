@@ -44,15 +44,15 @@ export default createStore({
       makeRequest("users?page=10", {
         method: "GET",
         headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
+          'accept': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
-        .then(data => data.json())
-        .then(data => {
-          console.log(data);
-          store.commit("getUsers", data.data);
-        });
+        .then(data=>data.json())
+        .then(data=> {
+          console.log(data)
+          store.commit('getUsers', data.data)
+        })
     }
   },
   modules: {
