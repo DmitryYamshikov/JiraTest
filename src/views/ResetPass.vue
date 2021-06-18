@@ -16,6 +16,7 @@
                   type="radio"
                   name="forgot"
                   value="forgotPassword"
+                  v-model="changeForgotType"
                   checked
                 />Password</label
               >
@@ -26,23 +27,51 @@
                   type="radio"
                   name="forgot"
                   value="forgotUsername"
+                  v-model="changeForgotType"
                 />Username</label
               >
             </div>
           </div>
         </fieldset>
-        <label class="label-user"
-          >Username<span>*</span><input type="text"
+        <label v-if="changeInputType" class="label-user"
+          ><span>Username</span><i>*</i><input type="text"
+        /></label>
+        <label v-else class="label-user"
+          ><span>Email</span><i>*</i><input type="text"
         /></label>
         <div class="form__footer">
           <button class="btn">Send</button>
           <router-link :to="{ name: 'Login' }">Cancel</router-link>
+          {{ forgotType }}
         </div>
       </form>
     </div>
   </div>
 </template>
-<script></script>
+<script>
+import { mapGetters, mapActions } from "vuex";
+
+export default {
+  data: () => ({}),
+  computed: {
+    ...mapGetters("resetpass", ["forgotType"]),
+    changeForgotType: {
+      get() {
+        return this.forgotType;
+      },
+      set(value) {
+        this.setForgotType(value);
+      }
+    },
+    changeInputType() {
+      return this.forgotType === "forgotPassword";
+    }
+  },
+  methods: {
+    ...mapActions("resetpass", ["setForgotType"])
+  }
+};
+</script>
 <style scoped lang="scss">
 h1 {
   font-size: 24px;
@@ -94,8 +123,13 @@ legend {
   font-size: 14px;
   color: rgb(107, 119, 140);
   margin-left: 75px;
-  span {
+  i {
     color: red;
+  }
+  span {
+    display: inline-block;
+    width: 64px;
+    text-align: right;
   }
   input {
     height: 30px;
