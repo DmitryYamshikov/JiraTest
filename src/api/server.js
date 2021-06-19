@@ -1,6 +1,8 @@
 
 let baseUrl = `http://65.21.188.112/api/`;
-export default function makeRequest(url = '', options = {}){
+//базовый запрос 
+//TODO оптимизировать запрос. Уменьшить повторения. Переместить все запросы в server.js
+export default function makeRequest(url = '', options = {}){ 
    try {
       return fetch(baseUrl + url, options)
    } catch (e) {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="modal-register__title">Welcome to DC Jira</h2>
-    <div class="alert-message" v-if="!valid">
+    <div class="alert-message" v-if="!valid"> 
       Sorry, your username and password are incorrect - please try again.
     </div>
     <form class="form-registr" @submit.prevent="submitForm(this.$router)">
@@ -45,7 +45,6 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  data: () => ({}),
   methods: {
     ...mapActions("formregistr", ["onInput", "onSubmit"]),
     ...mapActions(["rememberChange"]),
