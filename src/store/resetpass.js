@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: {
-    forgotType: "forgotPassword", //что необходимо восстановить по умолчанию "Password"
+    forgotType: "forgotPassword", //что необходимо восстановить. по умолчанию "Password"
     inputValue:'' //указываем Имя или Почту
   },
   getters: {
@@ -14,7 +14,7 @@ export default {
   },
   actions: {
     setForgotType: ({ commit }, value) => {
-      commit('setInputValue', '') //при смене radio button сбрпсываем значение Input
+      commit('setInputValue', '') //при смене radio button сбрасываем значение Input
       commit("setForgotType", value)
     },
     setInputValue: ({commit}, value) =>commit("setInputValue",value)
