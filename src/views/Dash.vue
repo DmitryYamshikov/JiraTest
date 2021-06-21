@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <tr v-for="item in userList" :key="item.id">
-        <td>{{ item.id }}</td>
+        <td class="item-id">{{ item.id }}</td>
         <td>
           <router-link :to="{ name: 'DashOne', params: { id: item.id } }">
             {{ item.name }}
@@ -23,9 +23,13 @@
     </tbody>
   </table>
   <div class="pagination">
-    <span v-for="(item, i) in pagination" :key="i" @click="paginationStep(i)">{{
-      item.label
-    }}</span>
+    <span
+      v-for="(item, i) in pagination"
+      :key="i"
+      @click="paginationStep(i)"
+      :class="item.active && 'active'"
+      >{{ item.label }}</span
+    >
   </div>
 </template>
 <script>
@@ -33,7 +37,7 @@ import { mapGetters, mapActions } from "vuex";
 import formDate from "../api/formDate";
 export default {
   computed: {
-    ...mapGetters("dash", ["userList", "pagination"])
+    ...mapGetters("dash", ["userList", "pagination", "dashList"])
   },
   methods: {
     ...mapActions("dash", ["getDashboard"]),
@@ -41,7 +45,13 @@ export default {
       return formDate(string);
     },
     paginationStep(index) {
-      this.getDashboard(index);
+      if (index === 0) {
+        this.getDashboard(this.dashList.current_page - 1);
+      } else if (index === this.dashList.last_page + 1) {
+        this.getDashboard(this.dashList.current_page + 1);
+      } else {
+        this.getDashboard(index);
+      }
     }
   },
   created() {
@@ -49,3 +59,17 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+  span {
+    padding: 10px;
+    cursor: pointer;
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+</style>

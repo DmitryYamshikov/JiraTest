@@ -17,40 +17,42 @@
             {{ item.name }}
           </router-link>
         </td>
-        <td>{{item.user.name}}</td>
+        <td>{{ item.user.name }}</td>
         <td>{{ item.created_at }}</td>
       </tr>
     </tbody>
   </table>
 </template>
 <script>
-  import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
-  export default {
-    computed: {
-      ...mapGetters("projects", ["projectList"]),
-    },
-    methods: {
-      ...mapActions("projects", ["getProjects"]),
-    },
+export default {
+  computed: {
+    ...mapGetters("projects", ["projectList"])
+  },
+  methods: {
+    ...mapActions("projects", ["getProjects"])
+  },
 
-    created() {
-      this.getProjects();
-    },
-  };
+  created() {
+    this.getProjects();
+  }
+};
 </script>
 <style lang="scss">
-  table {
-    width:100%;
-    border-collapse: collapse;
-    tr {
-      
-      th,
-      td {
-        border-bottom: 1px solid rgb(187, 187, 187);
-        padding: 10px 20px;
-        text-align: left;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  tr {
+    th,
+    td {
+      border-bottom: 1px solid rgb(187, 187, 187);
+      padding: 10px 20px;
+      text-align: left;
+      &.item-id {
+        width: 5%;
       }
     }
   }
+}
 </style>
