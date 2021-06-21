@@ -3,21 +3,19 @@ import makeRequest from "../api/server";
 export default {
   namespaced: true,
   state: {
-    dashList: []
+    personalList: []
   },
   getters: {
-    userList: state => state.dashList.data,
-    pagination: state => state.dashList.links,
-    dashList: state => state.dashList
+    personalList: state => state.personalList
   },
   mutations: {
-    getDashboard: (state, obj) => {
-      state.dashList = obj;
+    getPersonalList: (state, obj) => {
+      state.personalList = obj;
     }
   },
   actions: {
-    getDashboard(store, page = 0) {
-      makeRequest(`dashboards?page=${page}`, {
+    getPersonalList(store) {
+      makeRequest("users?name=rickey87", {
         method: "GET",
         headers: {
           accept: "application/json",
@@ -26,7 +24,8 @@ export default {
       })
         .then(data => data.json())
         .then(data => {
-          store.commit("getDashboard", data);
+          console.log(data);
+          store.commit("getPersonalList", data);
         });
     }
   }

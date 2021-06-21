@@ -29,3 +29,26 @@ body, html {
   width: 100%;
   padding: 0 30px;
 }
+.page-wrapper {
+  display: flex;
+}
+aside {
+  border-right: 2px solid #ebecf0;
+  width: 240px;
+  background-color: #fff;
+  padding: 20px 15px;
+}
+main {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+}
+.page-header {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #ebecf0;
+  padding: 20px;
+  height: 70px;
+}
+

@@ -8,6 +8,7 @@ import projects from "./projects";
 import dash from "./dash";
 import dashone from "./dashone";
 import resetpass from "./resetpass";
+import personal from "./personal";
 
 export default createStore({
   state: {
@@ -44,15 +45,15 @@ export default createStore({
       makeRequest("users?page=10", {
         method: "GET",
         headers: {
-          'accept': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         }
       })
-        .then(data=>data.json())
-        .then(data=> {
-          console.log(data)
-          store.commit('getUsers', data.data)
-        })
+        .then(data => data.json())
+        .then(data => {
+          console.log(data);
+          store.commit("getUsers", data.data);
+        });
     }
   },
   modules: {
@@ -61,6 +62,7 @@ export default createStore({
     projects,
     dash,
     dashone,
-    resetpass
+    resetpass,
+    personal
   }
 });
