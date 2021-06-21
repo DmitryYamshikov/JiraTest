@@ -7,7 +7,8 @@ export default {
   },
   getters: {
     userList: state => state.dashList.data,
-    pagination: state => state.dashList.links
+    pagination: state => state.dashList.links,
+    dashList: state => state.dashList
   },
   mutations: {
     getDashboard: (state, obj) => {
