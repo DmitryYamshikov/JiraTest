@@ -28,15 +28,8 @@
         </tbody>
       </table>
       <!--TODO вывести пагинцию в отдельный компонент -->
-      <div class="pagination">
-        <span
-          v-for="(item, i) in personalList.links"
-          :key="i"
-          @click="paginationStep(i)"
-          :class="item.active && 'active'"
-          >{{ item.label }}</span
-        >
-      </div>
+
+      <pagination :page="personalList"></pagination>
     </main>
   </div>
   <div class="modal">
@@ -98,7 +91,11 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Pagination from "../components/Pagination";
 export default {
+  components: {
+    Pagination
+  },
   computed: {
     ...mapGetters("personal", ["personalList"])
   },
