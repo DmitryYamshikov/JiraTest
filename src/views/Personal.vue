@@ -7,6 +7,8 @@
       <span>Новый сотрудник</span>
     </aside>
     <main>
+      <!--TODO вывести пагинцию в отдельный компонент -->
+      <!--TODO вывести таблицу в отдельный компонент -->
       <table>
         <thead>
           <tr>
@@ -27,9 +29,8 @@
           </tr>
         </tbody>
       </table>
-      <!--TODO вывести пагинцию в отдельный компонент -->
 
-      <pagination :page="personalList"></pagination>
+      <pagination :page="personalList" @calcnextpage="loadUsers"></pagination>
     </main>
   </div>
   <div class="modal">
@@ -101,14 +102,8 @@ export default {
   },
   methods: {
     ...mapActions("personal", ["getPersonalList"]),
-    paginationStep(index) {
-      if (index === 0) {
-        this.getPersonalList(this.personalList.current_page - 1);
-      } else if (index === this.personalList.last_page + 1) {
-        this.getPersonalList(this.personalList.current_page + 1);
-      } else {
-        this.getPersonalList(index);
-      }
+    loadUsers(value) {
+      this.getPersonalList(value);
     }
   },
   created() {
@@ -119,6 +114,7 @@ export default {
 
 <style scoped lang="scss">
 .modal {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;

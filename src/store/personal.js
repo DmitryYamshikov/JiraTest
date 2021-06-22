@@ -14,8 +14,8 @@ export default {
     }
   },
   actions: {
-    getPersonalList(store) {
-      makeRequest("users?name=rickey87", {
+    getPersonalList(store, page = 0) {
+      makeRequest(`users?page=${page}`, {
         method: "GET",
         headers: {
           accept: "application/json",
