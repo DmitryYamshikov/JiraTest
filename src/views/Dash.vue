@@ -59,17 +59,4 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.pagination {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 40px;
-  span {
-    padding: 10px;
-    cursor: pointer;
-    &.active {
-      text-decoration: underline;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>

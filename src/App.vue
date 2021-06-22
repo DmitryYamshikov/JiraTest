@@ -1,11 +1,8 @@
 <template>
   <header-section></header-section>
-  <div class="container">
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 <script>
-// import makeRequest from "./api/server.js";
 import HeaderSection from "./components/HeaderSection";
 
 import { mapGetters, mapActions } from "vuex";
@@ -28,10 +25,6 @@ export default {
       this.signIn();
     }
     this.getUsers();
-  },
-  Updated() {},
-  created() {
-    // makeRequest();
   }
 };
 </script>
