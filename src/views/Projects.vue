@@ -1,37 +1,53 @@
 <template>
-  <h2>Проекты</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Author</th>
-        <th>Created</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in projectList" :key="item.id">
-        <td>{{ item.id }}</td>
-        <td>
-          <router-link :to="{ name: 'OneProject', params: { id: item.id } }">
-            {{ item.name }}
-          </router-link>
-        </td>
-        <td>{{ item.user.name }}</td>
-        <td>{{ item.created_at }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="page-header">
+    <h1>Projects</h1>
+  </div>
+  <div class="page-wrapper">
+    <aside></aside>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in projectList.data" :key="item.id">
+            <td>{{ item.id }}</td>
+            <td>
+              <router-link
+                :to="{ name: 'OneProject', params: { id: item.id } }"
+              >
+                {{ item.name }}
+              </router-link>
+            </td>
+            <td>{{ item.user.name }}</td>
+            <td>{{ item.created_at }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination :page="projectList" @calcnextpage="loadProjects"></pagination>
+    </main>
+  </div>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
-
+import Pagination from "../components/Pagination";
 export default {
+  components: {
+    Pagination
+  },
   computed: {
     ...mapGetters("projects", ["projectList"])
   },
   methods: {
-    ...mapActions("projects", ["getProjects"])
+    ...mapActions("projects", ["getProjects"]),
+    loadProjects(value) {
+      this.getProjects(value);
+    }
   },
 
   created() {

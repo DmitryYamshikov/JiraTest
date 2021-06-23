@@ -6,8 +6,8 @@ export default {
     dashList: []
   },
   getters: {
-    userList: state => state.dashList.data,
-    pagination: state => state.dashList.links,
+    // userList: state => state.dashList.data,
+    // pagination: state => state.dashList.links,
     dashList: state => state.dashList
   },
   mutations: {

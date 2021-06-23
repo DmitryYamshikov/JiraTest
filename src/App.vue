@@ -1,15 +1,19 @@
 <template>
-  <header-section></header-section>
-  <router-view></router-view>
+  <div class="app-content">
+    <header-section></header-section>
+    <router-view></router-view>
+    <footer-section></footer-section>
+  </div>
 </template>
 <script>
 import HeaderSection from "./components/HeaderSection";
-
+import FooterSection from "./components/FooterSection";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
-    HeaderSection
+    HeaderSection,
+    FooterSection
   },
   computed: {
     ...mapGetters(["login"])
@@ -29,6 +33,12 @@ export default {
 };
 </script>
 <style lang="scss">
+.app-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .modal-register {
   position: fixed;
   top: 0;

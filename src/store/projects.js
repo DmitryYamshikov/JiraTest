@@ -24,7 +24,7 @@ export default {
       })
         .then(data => data.json())
         .then(data => {
-          store.commit("getProjects", data.data);
+          store.commit("getProjects", data);
         });
     }
   }

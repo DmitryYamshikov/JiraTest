@@ -31,6 +31,7 @@ body, html {
 }
 .page-wrapper {
   display: flex;
+  flex: 1;
 }
 aside {
   border-right: 2px solid #ebecf0;
@@ -51,4 +52,5 @@ main {
   padding: 20px;
   height: 70px;
 }
+
 
