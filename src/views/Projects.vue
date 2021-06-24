@@ -46,6 +46,7 @@ export default {
   methods: {
     ...mapActions("projects", ["getProjects"]),
     loadProjects(value) {
+      console.log(value);
       this.getProjects(value);
     }
   },

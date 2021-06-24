@@ -4,7 +4,7 @@
   </div>
   <div class="page-wrapper">
     <aside>
-      <span>Новый сотрудник</span>
+      <span @click="changeModalStatus">Новый сотрудник</span>
     </aside>
     <main>
       <!--TODO вывести таблицу в отдельный компонент -->
@@ -32,7 +32,7 @@
       <pagination :page="personalList" @calcnextpage="loadUsers"></pagination>
     </main>
   </div>
-  <div class="modal">
+  <div class="modal" v-if="changeModalVision">
     <div class="wrapper">
       <form>
         <label
@@ -97,10 +97,15 @@ export default {
     Pagination
   },
   computed: {
-    ...mapGetters("personal", ["personalList"])
+    ...mapGetters("personal", ["personalList"]),
+    ...mapGetters(["modalStatus"]),
+    changeModalVision() {
+      return this.modalStatus;
+    }
   },
   methods: {
     ...mapActions("personal", ["getPersonalList"]),
+    ...mapActions(["changeModalStatus"]),
     loadUsers(value) {
       this.getPersonalList(value);
     }
@@ -113,7 +118,6 @@ export default {
 
 <style scoped lang="scss">
 .modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;

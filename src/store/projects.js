@@ -14,8 +14,8 @@ export default {
   },
 
   actions: {
-    getProjects(store) {
-      makeRequest("projects", {
+    getProjects(store, index = 0) {
+      makeRequest(`projects?page=${index}`, {
         method: "GET",
         headers: {
           accept: "application/json",
