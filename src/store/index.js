@@ -1,7 +1,5 @@
 import { createStore } from "vuex";
 
-import makeRequest from "../api/server";
-
 import formregistr from "./formregistr";
 import menu from "./menu";
 import projects from "./projects";
@@ -13,20 +11,20 @@ import personal from "./personal";
 export default createStore({
   state: {
     login: false,
-    remember: true,
+    remember: true, //запоминать ли user login //TODO сделать функционал remember user
     currentUser: {},
     token: "",
-    users: []
+    modalStatus: false
   },
   getters: {
     login: state => state.login,
     remember: state => state.remember,
-    users: state => state.users
+    modalStatus: state => state.modalStatus
   },
   mutations: {
     signIn: state => (state.login = !state.login),
     rememberChange: state => (state.remember = !state.remember),
-    getUsers: (state, obj) => (state.user = obj)
+    changeModalStatus: state => (state.modalStatus = !state.modalStatus)
   },
   actions: {
     signIn(context) {
@@ -41,19 +39,8 @@ export default createStore({
     rememberChange(context) {
       context.commit("rememberChange");
     },
-    getUsers(store) {
-      makeRequest("users?page=10", {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-      })
-        .then(data => data.json())
-        .then(data => {
-          console.log(data);
-          store.commit("getUsers", data.data);
-        });
+    changeModalStatus({ commit }) {
+      commit("changeModalStatus");
     }
   },
   modules: {

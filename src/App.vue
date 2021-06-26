@@ -19,7 +19,7 @@ export default {
     ...mapGetters(["login"])
   },
   methods: {
-    ...mapActions(["signIn", "getUsers"])
+    ...mapActions(["signIn"])
   },
   beforeMount() {
     if (!localStorage.getItem("token")) {
@@ -28,7 +28,6 @@ export default {
       this.$router.push({ name: "Dash" });
       this.signIn();
     }
-    this.getUsers();
   }
 };
 </script>
