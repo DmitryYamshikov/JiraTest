@@ -1,12 +1,13 @@
 import { createStore } from "vuex";
 
-import formregistr from "./formregistr";
+import formlogin from "./formlogin";
 import menu from "./menu";
 import projects from "./projects";
 import dash from "./dash";
 import dashone from "./dashone";
 import resetpass from "./resetpass";
 import personal from "./personal";
+import formregistration from "./formregistration";
 
 export default createStore({
   state: {
@@ -44,12 +45,13 @@ export default createStore({
     }
   },
   modules: {
-    formregistr,
+    formlogin,
     menu,
     projects,
     dash,
     dashone,
     resetpass,
-    personal
+    personal,
+    formregistration
   }
 });
