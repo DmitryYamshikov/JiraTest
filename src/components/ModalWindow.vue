@@ -1,63 +1,19 @@
 <template>
   <div class="modal">
     <div class="wrapper">
-      <form>
-        <label
-          >Name<input type="text" name="name" placeholder="Enter name"
-        /></label>
-        <label
-          >Password<input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-        /></label>
-        <label
-          >Confirm Password<input
-            type="text"
-            name="confirm_password"
-            placeholder="Confirm password"
-        /></label>
-        <label
-          >Email <input type="email" name="email" placeholder="Enter email"
-        /></label>
-        <fieldset>
-          <legend>Choose role</legend>
-          <div class="fieldset__body">
-            <div class="radio">
-              <label
-                ><input
-                  type="radio"
-                  name="role"
-                  value="admin"
-                  checked
-                />admin</label
-              >
-            </div>
-            <div class="radio">
-              <label
-                ><input type="radio" name="role" value="pm" checked />Product
-                manager</label
-              >
-            </div>
-            <div class="radio">
-              <label
-                ><input
-                  type="radio"
-                  name="role"
-                  value="worker"
-                  checked
-                />worker</label
-              >
-            </div>
-          </div>
-        </fieldset>
-      </form>
+      <div class="close" @click="changeModalStatus">&#10006;</div>
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  methods: {
+    ...mapActions(["changeModalStatus"])
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -72,7 +28,18 @@ export default {};
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -50%);
   }
+  .close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    cursor: pointer;
+    font-size: 30px;
+  }
+}
+form {
 }
 </style>
