@@ -53,7 +53,7 @@ export default {
               return data.json();
             } else {
               store.commit("validChange", false);
-              throw new Error();
+              throw new Error(`что-то пошло не так`);
             }
           })
           .then(data => {
@@ -65,7 +65,7 @@ export default {
             router.push({ name: "Dash" }); //переход на главную страницу
           })
           .catch(error => {
-            console.log(error);
+            console.log(`Ошибка авторизации: ${error}`);
           });
       } else {
         store.commit("validChange", false);

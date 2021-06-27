@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="modal-register__title">Welcome to DC Jira</h2>
-    <div class="alert-message" v-if="!valid"> 
+    <div class="alert-message" v-if="!valid">
       Sorry, your username and password are incorrect - please try again.
     </div>
     <form class="form-registr" @submit.prevent="submitForm(this.$router)">
@@ -23,12 +23,12 @@
       </div>
       <div class="form-registr__footer">
         <label
-        ><input
+          ><input
             type="checkbox"
             name="remember"
             :checked="remember"
             @click="rememberChange()"
-        />Remember my login on this computer</label
+          />Remember my login on this computer</label
         >
         <div class="form-registr__notification">
           Not a member? To request an account, please contact your Jira
@@ -36,7 +36,9 @@
         </div>
         <div class="form-registr__log-reset">
           <button class="btn">Log in</button>
-          <router-link :to="{name:'ResetPass'}">Can't access your account?</router-link>
+          <router-link :to="{ name: 'ResetPass' }"
+            >Can't access your account?</router-link
+          >
         </div>
       </div>
     </form>
@@ -46,23 +48,23 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
   methods: {
-    ...mapActions("formregistr", ["onInput", "onSubmit"]),
+    ...mapActions("formlogin", ["onInput", "onSubmit"]),
     ...mapActions(["rememberChange"]),
-    async submitForm(router){
-       await this.onSubmit(router)
+    async submitForm(router) {
+      await this.onSubmit(router);
     }
   },
   computed: {
-    ...mapGetters("formregistr", ["fields","valid"]),
-    ...mapGetters(["remember"]),
-  },
+    ...mapGetters("formlogin", ["fields", "valid"]),
+    ...mapGetters(["remember"])
+  }
 };
 </script>
 <style lang="scss">
 .alert-message {
   font-size: 14px;
   background-color: rgb(255, 235, 230);
-  padding : 15px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,21 +113,20 @@ export default {
       margin-right: 9px;
     }
     a {
-      color:rgb(0, 82, 204);
+      color: rgb(0, 82, 204);
       font-size: 14px;
       text-decoration: none;
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
-
   }
 }
 .modal-register {
   &__title {
     font-size: 24px;
     line-height: 1.25;
-    letter-spacing: -.01em;
+    letter-spacing: -0.01em;
     margin-top: 0;
     font-weight: 500;
   }
