@@ -32,69 +32,23 @@
       <pagination :page="personalList" @calcnextpage="loadUsers"></pagination>
     </main>
   </div>
-  <div class="modal" v-if="changeModalVision">
-    <div class="wrapper">
-      <form>
-        <label
-          >Name<input type="text" name="name" placeholder="Enter name"
-        /></label>
-        <label
-          >Password<input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-        /></label>
-        <label
-          >Confirm Password<input
-            type="text"
-            name="confirm_password"
-            placeholder="Confirm password"
-        /></label>
-        <label
-          >Email <input type="email" name="email" placeholder="Enter email"
-        /></label>
-        <fieldset>
-          <legend>Choose role</legend>
-          <div class="fieldset__body">
-            <div class="radio">
-              <label
-                ><input
-                  type="radio"
-                  name="role"
-                  value="admin"
-                  checked
-                />admin</label
-              >
-            </div>
-            <div class="radio">
-              <label
-                ><input type="radio" name="role" value="pm" checked />Product
-                manager</label
-              >
-            </div>
-            <div class="radio">
-              <label
-                ><input
-                  type="radio"
-                  name="role"
-                  value="worker"
-                  checked
-                />worker</label
-              >
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </div>
+  <modal-window v-if="modalStatus">
+    <slot>
+      <form-registration></form-registration>
+    </slot>
+  </modal-window>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 import Pagination from "../components/Pagination";
+import ModalWindow from "../components/ModalWindow";
+import FormRegistration from "../components/FormRegistration";
 export default {
   components: {
-    Pagination
+    Pagination,
+    ModalWindow,
+    FormRegistration
   },
   computed: {
     ...mapGetters("personal", ["personalList"]),
