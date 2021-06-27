@@ -38,6 +38,10 @@ aside {
   width: 240px;
   background-color: #fff;
   padding: 20px 15px;
+  span {
+    cursor: pointer;
+  }
+
 }
 main {
   background-color: #fff;
@@ -52,5 +56,25 @@ main {
   padding: 20px;
   height: 70px;
 }
-
+label {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  input[type="text"],
+  input[type="password"],
+  input[type="email"]{
+    padding: 5px;
+    background-color: rgb(250, 251, 252);
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    &:focus {
+      background-color: #fff;
+      border: 1px solid blue;
+    }
+  }
+  span {
+    margin-right: 15px;
+    flex-basis: 70px;
+  }
+}
 

@@ -22,9 +22,10 @@ export default {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }
       })
-        .then(data => data.json())
         .then(data => {
-          console.log(data);
+          return data.json();
+        })
+        .then(data => {
           store.commit("getPersonalList", data);
         });
     }
