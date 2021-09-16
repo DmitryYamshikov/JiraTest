@@ -92,7 +92,7 @@ export default {
     }
     span {
       margin-right: 15px;
-      flex-basis: 70px;
+      flex-basis: 75px;
     }
   }
   &__notification {

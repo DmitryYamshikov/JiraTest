@@ -25,7 +25,7 @@
               </router-link>
             </td>
             <td>{{ item.user.name }}</td>
-            <td>{{ item.created_at }}</td>
+            <td>{{ createdDate(item.created_at) }}</td>
           </tr>
         </tbody>
       </table>
@@ -36,6 +36,8 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import Pagination from "../components/Pagination";
+import formDate from "../api/formDate";
+
 export default {
   components: {
     Pagination
@@ -45,10 +47,13 @@ export default {
   },
   methods: {
     ...mapActions("projects", ["getProjects"]),
+
     loadProjects(value) {
-      console.log(value);
       this.getProjects(value);
-    }
+    },
+		createdDate(string) {
+			return formDate(string);
+		}
   },
 
   created() {
